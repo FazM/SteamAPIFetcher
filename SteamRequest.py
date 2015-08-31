@@ -15,9 +15,9 @@ ITFItems_440: Team Fortress 2 provides API calls to use when accessing player it
 
 
 import requests
-import key
+#import key
 import json
-import steamapi
+#import steamapi
 from bs4 import BeautifulSoup
 import pprint as pp
 
@@ -37,7 +37,7 @@ xmltext = BeautifulSoup(teamfortress2.text)
 
 print(pp.pprint(data2['apilist']['interfaces']))
 
-steamapi.core.APIConnection(api_key=API_KEY)
-steamapi.user.SteamUser(userurl="smileybarry")
+#steamapi.core.APIConnection(api_key=API_KEY)
+#steamapi.user.SteamUser(userurl="smileybarry")
 
 
