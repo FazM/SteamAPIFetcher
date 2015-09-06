@@ -1,4 +1,10 @@
 __author__ = 'Faz'
+
+"""
+
+"""
+
+
 from bs4 import BeautifulSoup
 import requests
 import pickle as cp

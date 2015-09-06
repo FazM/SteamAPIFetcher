@@ -1,7 +1,12 @@
 __author__ = 'Faz'
 import sys
-sys.path.append('C:\\Python34\\Lib\\site-packages\\steamapi-0.1-py3.4.egg')
+#sys.path.append('C:\\Python34\\Lib\\site-packages\\steamapi-0.1-py3.4.egg')
 """
+All interfaces and method are self-documented through the ISteamWebAPIUtil/GetSupportedAPIList call.
+https://steamdb.info/
+
+http://forums.steampowered.com/forums/showthread.php?t=2905013
+
 FORMAT
 
 http://api.steampowered.com/<interface>/<method>/<method_version>/.?key=<api key>&format=<format>
@@ -15,19 +20,15 @@ ITFItems_440: Team Fortress 2 provides API calls to use when accessing player it
 
 
 import requests
-#import key
+import key
 import json
-#import steamapi
 from bs4 import BeautifulSoup
 import pprint as pp
 
 
 API_KEY = key.API_PRIVATE_KEY
-#http://forums.steampowered.com/forums/showthread.php?t=2905013
-#All interfaces and method are self-documented through the ISteamWebAPIUtil/GetSupportedAPIList call.
-#https://steamdb.info/
+
 t = requests.get('http://api.steampowered.com/ISteamWebAPIUtil/GetSupportedAPIList/v0001/?format=json')
-#
 r = requests.get('http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={KEY}&steamids=STEAM_ID'.format(KEY=API_KEY))
 teamfortress2  = requests.get('http://api.steampowered.com/ISteamNews/GetNewsForApp/v0001/?format=xml&appid=440&count=3')
 
@@ -36,8 +37,5 @@ data2 = json.loads(t.text)
 xmltext = BeautifulSoup(teamfortress2.text)
 
 print(pp.pprint(data2['apilist']['interfaces']))
-
-#steamapi.core.APIConnection(api_key=API_KEY)
-#steamapi.user.SteamUser(userurl="smileybarry")
 
 
