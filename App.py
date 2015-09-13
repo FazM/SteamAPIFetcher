@@ -63,7 +63,15 @@ class Game(App):
         self.name = name
         self.tstamp = tstamp
 
-    def get_game_stats(self):
+    def get_game_global_stats(self):
         pass
+
+    def get_game_price_stats(self):
+        data = api_url(interface='ISteamEconomy', method='GetAssetPrices', version='v1', appid=self.app_id)
+        return data
+
+    def get_game_news_stats(self):
+        pass
+
 
 json = url_to_json(api_url(interface=INTERFACE_DICT['news_stats'], method = 'GetNewsForApp', format = 'json', appid='440', count=3))
