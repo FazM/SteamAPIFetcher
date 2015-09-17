@@ -15,7 +15,10 @@ vdf - Output is returned as a VDF file.
 
 My Profile:
 http://steamcommunity.com/id/thisisfaz/
-my steamid : 76561198066178099
+my steamid : 76561198066178099, 76561198066178099
+
+USEFUL:
+http://store.steampowered.com/api/appdetails/?appids=730
 """
 
 # Global Variables
@@ -67,11 +70,12 @@ class Game(App):
         pass
 
     def get_game_price_stats(self):
-        data = api_url(interface='ISteamEconomy', method='GetAssetPrices', version='v1', appid=self.app_id)
-        return data
+        url = api_url(interface='ISteamEconomy', method='GetAssetPrices', version='v1', appid=self.app_id)
+        return url_to_json(url)
 
     def get_game_news_stats(self):
-        pass
+        url = api_url(interface=INTERFACE_DICT['news_stats'], method = 'GetNewsForApp', format = 'json', appid=self.app_id, count=3)
+        return url_to_json(url)
 
-
-json = url_to_json(api_url(interface=INTERFACE_DICT['news_stats'], method = 'GetNewsForApp', format = 'json', appid='440', count=3))
+    def get_app_details(self):
+        return url_to_json('http://store.steampowered.com/api/appdetails/?appids={APPID}'.format(APPID=self.app_id))

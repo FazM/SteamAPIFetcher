@@ -23,8 +23,6 @@ import requests
 import key
 import json
 from bs4 import BeautifulSoup
-import pprint as pp
-
 
 API_KEY = key.API_PRIVATE_KEY
 
